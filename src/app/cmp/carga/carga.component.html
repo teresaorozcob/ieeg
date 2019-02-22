@@ -1,0 +1,52 @@
+
+ <div class="row">
+
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="card-header card-header-tabs card-header-info">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">                            
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a mat-button class="nav-link" href="#messages" data-toggle="tab">
+                                <i class="material-icons">school</i> {{carga.proceso}}
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <p class="card-category">
+                        <i class="material-icons">attach_file</i>
+                        Nombre del archivo:
+                        <label class="text-info"><h5> <strong> {{carga.nombre_original}} </strong></h5></label> 
+                        <label><mat-chip-list><mat-chip color="primary">{{carga.tamanio}}</mat-chip></mat-chip-list></label>
+                    </p>
+                    <p class="card-category">
+                        <i class="material-icons">calendar_today</i>
+                        Última modificación:
+                        <label class="text-info"><h5><strong> {{carga.fecha_archivo}} </strong></h5></label>   
+                    </p> 
+                    
+                    
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <p class="card-category">
+                        <i class="material-icons">date_range</i>
+                        Periodo:
+                        <label class="text-info"><h5><strong> {{carga.periodo.nombre}} </strong></h5></label> 
+                    </p>
+                    <p class="card-category">
+                        <i class="material-icons">access_time</i> 
+                        Fecha carga:  
+                        <label class="text-info"><h5><strong>{{carga.fecha_carga}} </strong></h5></label>
+                    </p>   
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>

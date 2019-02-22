@@ -1,0 +1,97 @@
+<div class="main-content">
+  <div class="container-fluid">   
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" id="per">
+            <app-select-periodo (selectedPeriodo)="getPeriodo($event)"></app-select-periodo>
+        </div>
+        <div class="col-md-3"></div>
+    </div> 
+    <div class="row"  >
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                  <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel matStepperNext>Carga de archivos en Excel</ng-template>
+                      <!--<div *ngIf="!cargas"><mat-spinner></mat-spinner></div>-->
+                      <div *ngIf="cargas?.length > 0; else noCargas">
+                        <div *ngFor="let carga of cargas; let indice = index"> 
+                          <!--<p>{{carga.fecha_archivo | date:'short'}}</p>               
+                          <p>{{carga.fecha_archivo | date:'dd/MM/yy, h:mm a'}}</p>               
+                          <p>{{carga.fecha_archivo | date:'fullDate'}}</p>               -->
+                          <div class="col-md-1"></div>
+                          <div class="col-md-12">
+                            <app-carga [carga]="carga"></app-carga>
+                          </div>
+                          <div class="col-md-1"></div>
+                          <button (click)="DeleteCargaXls(carga)">Eliminar</button>                    
+                        </div>
+                      </div>
+          
+                      <ng-template #noCargas>
+                        <div class="card-body">
+                                <div class="row">
+                                        <div class="col-md-3"></div>
+                                    <div class="col-md-6">
+                                        <div class="alert alert-info">
+                                            <!--<span>Es necesario seleccionar el periodo Aún no hay registros de cargas</span>-->
+                                           <span>Aún no hay registros de cargas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </ng-template>
+
+                    
+                 
+                    <div>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                  <form [formGroup]="secondFormGroup">
+                      
+                    <ng-template matStepLabel>
+                        Procesamiento de Datos
+                        <span *ngIf="1 >= 4"><i class="material-icons text-danger">warning</i></span>
+                    </ng-template>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Proceso Finalizado</ng-template>
+                  You are now done.
+                  <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                  </div>
+                </mat-step>
+              </mat-horizontal-stepper>
+
+              <ng-template #noProceso>
+                <div class="card-body">
+                        <div class="row">
+                                <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="alert alert-info">
+                                    <span>Es necesario seleccionar el periodo Aún no hay registros de cargas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </ng-template>
+
+        </div>
+        <div class="col-md-1"></div>
+        
+
+    </div>
+    
+  </div>
+</div>

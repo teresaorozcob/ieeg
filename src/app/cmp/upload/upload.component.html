@@ -1,0 +1,69 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Carga de Archivos</h4>
+                        <p class="card-category">Selecciona según el proceso</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <app-select-periodo (selectedPeriodo)="getPeriodo($event)"></app-select-periodo>
+                                </div>
+                                <div class="col-md-6">
+                                    <app-select-proceso (selectedProceso)="getProceso($event)"></app-select-proceso>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                        
+                                    <button type="button" class="btn btn-info btn-s"
+                                        (click)="uploader.uploadAll(selectedPeriodo, selectedProceso)" 
+                                        [disabled]="!uploader.getNotUploadedItems().length">
+                                        Subir archivo
+                                        
+                                    </button>
+                                    <!--<div class="loading" *ngIf="loading">
+                                        <mat-spinner></mat-spinner>
+                                    </div>
+                                   -->
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>                
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>        
+        
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h5 class="card-title">
+                            <i class="material-icons">attach_file</i> 
+                            Especificaciones en los archivos
+                        </h5>
+                    </div>
+                    <br>
+                    <div class="card-body">
+                        <p>Matrícula Inscrita</p>
+                    </div>                
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>    
+    </div>
+</div>
